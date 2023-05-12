@@ -3,7 +3,7 @@ import {StyledTextInput, StyledTextArea} from "./Misc";
 
 export default function PersonalInfo ({firstNameEvent, lastNameEvent, titleEvent, addressEvent, phoneNumberEvent, emailEvent, descriptionEvent}) {
     return (
-    <div className="flex flex-auto flex-col items-left gap-3">
+    <div className="flex flex-auto flex-col items-left">
 
         <StyledTextInput placeholder={"First name"} onChangeHandler={firstNameEvent} />
         <StyledTextInput placeholder={"Last name"} onChangeHandler={lastNameEvent}/>

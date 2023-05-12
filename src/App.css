@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+hr {
+  border: 0.5px solid lightgrey;
+  margin-bottom: 1rem;
+}
+
 .App {
   text-align: center;
 }
