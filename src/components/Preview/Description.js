@@ -1,7 +1,7 @@
 import React from "react";
-import {StyledSmallText, StyledLabel} from "../Preview/Misc";
+import {StyledSmallText, StyledLabel} from "./Misc";
 
-export default function Body ({address, phoneNumber, email, description}) {
+export default function Description ({address, phoneNumber, email, description}) {
     return (
     <div className="bg-blue-500 width-500">
         <StyledLabel text="Description"/>

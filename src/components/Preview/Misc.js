@@ -10,7 +10,7 @@ function StyledSmallText({text}) {
 }
 
 function StyledLabel({text}) {
-    return <span className="text-white">{text}</span>
+    return <span className="text-black">{text}</span>
 
 }
 

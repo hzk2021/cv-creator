@@ -1,17 +1,18 @@
 import React from "react";
-import {StyledTitle, StyledTextInput} from "../Misc";
+import {StyledTextInput, DeleteExperienceButton} from "./Misc";
 
-export default function Experience() {
+export default function Experience({positionEvent, companyEvent, cityEvent, fromEvent, toEvent, deleteEvent, index}) {
     return (
     <div className="flex flex-auto flex-col items-left gap-3">
 
-        <StyledTitle text={"Experience"}/>
-        <StyledTextInput placeholder={"Position"} />
-        <StyledTextInput placeholder={"Company"} />
-        <StyledTextInput placeholder={"City"} />
+        <StyledTextInput placeholder={"Position"} onChangeHandler={positionEvent} index={index}/>
+        <StyledTextInput placeholder={"Company"} onChangeHandler={companyEvent} index={index}/>
+        <StyledTextInput placeholder={"City"} onChangeHandler={cityEvent} index={index}/>
 
-        <StyledTextInput placeholder={"From"} />
-        <StyledTextInput placeholder={"To"} />
+        <StyledTextInput placeholder={"From"} onChangeHandler={fromEvent} index={index}/>
+        <StyledTextInput placeholder={"To"} onChangeHandler={toEvent} index={index}/>
+
+        <DeleteExperienceButton onClickHandler={deleteEvent} index={index}/>
     </div>
     );
 }
