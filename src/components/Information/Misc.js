@@ -29,7 +29,7 @@ function StyledTextArea({placeholder, onChangeHandler}) {
 }
 
 function AddButton({onClickHandler}){
-    return <button onClick={onClickHandler} className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded w-full">Add</button>
+    return <button onClick={onClickHandler} className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded w-full mb-5">Add</button>
 }
 
 function DeleteButton({onClickHandler, index}){

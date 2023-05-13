@@ -5,7 +5,7 @@ export default function Experience ({position, company, city, from, to}) {
     return (
     <div className="p-2 flex mb-3 last:mb-5">
         <div className="flex-1">
-            <p>{<StyledSmallText text={from} />} - {<StyledSmallText text={to} />}</p>
+            <p>{<StyledSmallText text={from} classAddon="font-bold text-black"/>} - {<StyledSmallText text={to} classAddon="font-bold text-black"/>}</p>
         </div>
 
         <div className="flex-1">

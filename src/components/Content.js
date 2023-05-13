@@ -9,6 +9,8 @@ import {StyledLabel} from "./Preview/Misc";
 import PreviewExperience from './Preview/Experience';
 import PersonalDetails from './Preview/PersonalDetails';
 import Education from './Information/Education';
+import PreviewEducation from './Preview/Education';
+
 
 export class Content extends React.Component {
     constructor(props) {
@@ -57,6 +59,8 @@ export class Content extends React.Component {
         this.deleteEducation = this.deleteEducation.bind(this);
     }
 
+    // General Information
+    
     changeFirstName(name) {
         this.setState({firstName: name});
     }
@@ -84,6 +88,8 @@ export class Content extends React.Component {
     changeDescription(description) {
         this.setState({description});
     }
+
+    // Experience Information
 
     changeExperiencePosition(position, index = 0) {
 
@@ -165,6 +171,8 @@ export class Content extends React.Component {
         return experiences;
     }
 
+    // Education Information
+
     changeEducationUniversity(name, index = 0) {
 
         this.setState(prevState => {
@@ -245,7 +253,7 @@ export class Content extends React.Component {
             educations.push((<Education key={this.state.educations[i].index} 
                 universityEvent={this.changeEducationUniversity} 
                 cityEvent={this.changeEducationCity}
-                degreeEvent={this.changeEducationCity}
+                degreeEvent={this.changeEducationDegree}
                 subjectEvent={this.changeEducationSubject}
                 fromEvent={this.changeEducationFrom}
                 toEvent={this.changeEducationTo}
@@ -287,10 +295,9 @@ export class Content extends React.Component {
                         <AddButton onClickHandler={this.addEducationClicked.bind(this)}/>
                     </div>
                     
-                    <hr className='mb-5'></hr>
                 </div>
 
-                <div id="preview-info" className="grid grid-cols-3 grid-rows-[100px_1fr] bg-slate-400 text-left shadow-2xl bg-white sticky top-1">
+                <div id="preview-info" className="grid grid-cols-3 grid-rows-[100px_1fr] bg-slate-400 text-left shadow-2xl bg-white sticky top-3 max-h-[50%]">
                     <div className='col-span-3 bg-blue-500 p-2'>
                         <Header 
                             firstName={this.state.firstName}
@@ -311,6 +318,19 @@ export class Content extends React.Component {
                                         position={e.position}
                                         company={e.company}
                                         city={e.city}
+                                        from={e.from}
+                                        to={e.to} />
+                            })
+                        }
+
+                        <StyledLabel text="Education" classAddon="p-2"/>
+                        {
+                            this.state.educations.map(e => {
+                                return <PreviewEducation 
+                                        universityName={e.name}
+                                        city={e.city}
+                                        degree={e.degree}
+                                        subject={e.subject}
                                         from={e.from}
                                         to={e.to} />
                             })
