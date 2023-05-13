@@ -4,10 +4,11 @@ import PersonalInfo from './Information/PersonalInfo';
 import Header from './Preview/Header';
 import Description from './Preview/Description';
 import Experience from './Information/Experience';
-import {StyledTitle, AddExperienceButton} from "./Information/Misc";
+import {StyledTitle, AddButton} from "./Information/Misc";
 import {StyledLabel} from "./Preview/Misc";
 import PreviewExperience from './Preview/Experience';
 import PersonalDetails from './Preview/PersonalDetails';
+import Education from './Information/Education';
 
 export class Content extends React.Component {
     constructor(props) {
@@ -29,6 +30,15 @@ export class Content extends React.Component {
                 to: '',
                 index: 0,
             }],
+            educations: [{
+                name: '',
+                city: '',
+                degree: '',
+                subject: '',
+                from: '',
+                to: '',
+                index: 0,
+            }],
         }
 
         this.changeExperiencePosition = this.changeExperiencePosition.bind(this);
@@ -37,6 +47,14 @@ export class Content extends React.Component {
         this.changeExperienceFrom = this.changeExperienceFrom.bind(this);
         this.changeExperienceTo = this.changeExperienceTo.bind(this);
         this.deleteExperience = this.deleteExperience.bind(this);
+
+        this.changeEducationUniversity = this.changeEducationUniversity.bind(this);
+        this.changeEducationCity = this.changeEducationCity.bind(this);
+        this.changeEducationDegree = this.changeEducationDegree.bind(this);
+        this.changeEducationSubject = this.changeEducationSubject.bind(this);
+        this.changeEducationFrom = this.changeEducationFrom.bind(this);
+        this.changeEducationTo = this.changeEducationTo.bind(this);
+        this.deleteEducation = this.deleteEducation.bind(this);
     }
 
     changeFirstName(name) {
@@ -126,7 +144,6 @@ export class Content extends React.Component {
 
     deleteExperience(index){
         this.setState({experiences: this.state.experiences.filter((e, i) => {
-            console.log(e)
             return i !== index;
         })});
     }
@@ -148,6 +165,97 @@ export class Content extends React.Component {
         return experiences;
     }
 
+    changeEducationUniversity(name, index = 0) {
+
+        this.setState(prevState => {
+            const newEducations = [...prevState.educations];
+            newEducations[index].name = name;
+            return {educations: newEducations};
+        });
+    }
+
+    changeEducationCity(city, index = 0) {
+
+        this.setState(prevState => {
+            const newEducations = [...prevState.educations];
+            newEducations[index].city = city;
+            return {educations: newEducations};
+        });
+    }
+
+    changeEducationDegree(degree, index = 0) {
+
+        this.setState(prevState => {
+            const newEducations = [...prevState.educations];
+            newEducations[index].degree = degree;
+            return {educations: newEducations};
+        });
+    }
+
+    changeEducationSubject(subject, index = 0) {
+
+        this.setState(prevState => {
+            const newEducations = [...prevState.educations];
+            newEducations[index].subject = subject;
+            return {educations: newEducations};
+        });
+    }
+
+    changeEducationFrom(from, index = 0) {
+
+        this.setState(prevState => {
+            const newEducations = [...prevState.educations];
+            newEducations[index].from = from;
+            return {educations: newEducations};
+        });
+    }
+
+    changeEducationTo(to, index = 0) {
+
+        this.setState(prevState => {
+            const newEducations = [...prevState.educations];
+            newEducations[index].to = to;
+            return {educations: newEducations};
+        });
+    }
+
+    addEducationClicked(){        
+        this.setState({educations: this.state.educations.concat(
+            {
+                name: '',
+                city: '',
+                degree: '',
+                subject: '',
+                from: '',
+                to: '',
+                index: 0,
+            }
+        )});
+    }
+
+    deleteEducation(index){
+        this.setState({educations: this.state.educations.filter((e, i) => {
+            return i !== index;
+        })});
+    }
+
+    addEducationUI(){
+        var educations = [];
+        for (let i = 0; i < this.state.educations.length; i++) {
+            educations.push((<Education key={this.state.educations[i].index} 
+                universityEvent={this.changeEducationUniversity} 
+                cityEvent={this.changeEducationCity}
+                degreeEvent={this.changeEducationCity}
+                subjectEvent={this.changeEducationSubject}
+                fromEvent={this.changeEducationFrom}
+                toEvent={this.changeEducationTo}
+                deleteEvent={this.deleteEducation}
+                index={i}/>))
+        }
+
+        return educations;
+    }
+
     render() {
         return(
             <div className="grid grid-cols-2 mx-20 my-10 gap-10">
@@ -165,12 +273,21 @@ export class Content extends React.Component {
                                     descriptionEvent={this.changeDescription.bind(this)}
                                     />
                     </div>
-                    <hr></hr>
+                    <hr className='mb-5'></hr>
                     <div>
                         <StyledTitle text={"Experience"}/>
                         {this.addExperienceUI()}
-                        <AddExperienceButton onClickHandler={this.addExperienceClicked.bind(this)}/>
+                        <AddButton onClickHandler={this.addExperienceClicked.bind(this)}/>
                     </div>
+
+                    <hr className='mb-5'></hr>
+                    <div>
+                        <StyledTitle text={"Education"}/>
+                        {this.addEducationUI()}
+                        <AddButton onClickHandler={this.addEducationClicked.bind(this)}/>
+                    </div>
+                    
+                    <hr className='mb-5'></hr>
                 </div>
 
                 <div id="preview-info" className="grid grid-cols-3 grid-rows-[100px_1fr] bg-slate-400 text-left shadow-2xl bg-white sticky top-1">

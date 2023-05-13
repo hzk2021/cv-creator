@@ -1,7 +1,7 @@
 import React from "react";
 
 function StyledTitle({text}) {
-    return <h1 className="mb-3">{text}</h1>
+    return <h1 className="mb-3 font-semibold">{text}</h1>
 }
 
 function StyledTextInput({placeholder, onChangeHandler, index}) {
@@ -28,12 +28,12 @@ function StyledTextArea({placeholder, onChangeHandler}) {
             </textarea>
 }
 
-function AddExperienceButton({onClickHandler}){
+function AddButton({onClickHandler}){
     return <button onClick={onClickHandler} className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded w-full">Add</button>
 }
 
-function DeleteExperienceButton({onClickHandler, index}){
+function DeleteButton({onClickHandler, index}){
     return <button onClick={e => onClickHandler(index)} className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded my-3">Delete</button>
 }
 
-export {StyledTitle, StyledTextInput, StyledTextArea, AddExperienceButton, DeleteExperienceButton}
+export {StyledTitle, StyledTextInput, StyledTextArea, AddButton, DeleteButton}
