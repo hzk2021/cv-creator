@@ -7,6 +7,7 @@ import Experience from './Information/Experience';
 import {StyledTitle, AddExperienceButton} from "./Information/Misc";
 import {StyledLabel} from "./Preview/Misc";
 import PreviewExperience from './Preview/Experience';
+import PersonalDetails from './Preview/PersonalDetails';
 
 export class Content extends React.Component {
     constructor(props) {
@@ -150,7 +151,7 @@ export class Content extends React.Component {
     render() {
         return(
             <div className="grid grid-cols-2 mx-20 my-10 gap-10">
-                <div id="personal-info" className='bg-slate-400 p-2 text-left p-5 shadow-2xl bg-white'>
+                <div id="personal-info" className='bg-slate-400 text-left p-5 shadow-2xl bg-white'>
                     <div>
                         <StyledTitle text={"Personal Information"}/>
 
@@ -172,8 +173,8 @@ export class Content extends React.Component {
                     </div>
                 </div>
 
-                <div id="preview-info" className="grid grid-rows-5">
-                    <div className='grid row-span-1'>
+                <div id="preview-info" className="grid grid-cols-3 grid-rows-[100px_1fr] bg-slate-400 text-left shadow-2xl bg-white sticky top-1">
+                    <div className='col-span-3 bg-blue-500 p-2'>
                         <Header 
                             firstName={this.state.firstName}
                             lastName={this.state.lastName}
@@ -181,16 +182,12 @@ export class Content extends React.Component {
                             />
                     </div>
 
-                    <div className='grid row-span-4'>
+                    <div className='col-span-2'>
                         <Description 
-                            address={this.state.address}
-                            phoneNumber={this.state.phoneNumber}
-                            email={this.state.email}
                             description={this.state.description}
                             />
-
-                        <StyledLabel text="Experience"/>
                         
+                        <StyledLabel text="Experience" classAddon="p-2"/>
                         {
                             this.state.experiences.map(e => {
                                 return <PreviewExperience 
@@ -201,6 +198,13 @@ export class Content extends React.Component {
                                         to={e.to} />
                             })
                         }
+                    </div>
+
+                    <div className='col-span-1 bg-slate-100'>
+                        <PersonalDetails 
+                                address = {this.state.address}
+                                phoneNumber = {this.state.phoneNumber}
+                                email = {this.state.email}/>
                     </div>
                     
                 </div>

@@ -3,12 +3,15 @@ import {StyledSmallText} from "./Misc";
 
 export default function Experience ({position, company, city, from, to}) {
     return (
-    <div className="bg-blue-500 width-500">
-        <p>{<StyledSmallText text={position}/>}</p>
-        <p>{<StyledSmallText text={company} />}</p>
-        <p>{<StyledSmallText text={city} />}</p>
-        <p>{<StyledSmallText text={from} />}</p>
-        <p>{<StyledSmallText text={to} />}</p>
+    <div className="p-2 flex mb-3 last:mb-5">
+        <div className="flex-1">
+            <p>{<StyledSmallText text={from} />} - {<StyledSmallText text={to} />}</p>
+        </div>
+
+        <div className="flex-1">
+            <p>{<StyledSmallText text={position} classAddon="font-bold text-black"/>}</p>
+            <p>{<StyledSmallText text={company} />}, {<StyledSmallText text={city} />}</p>
+        </div>
     </div>
     );
 }
