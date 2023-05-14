@@ -57,6 +57,7 @@ export class Content extends React.Component {
         this.changeEducationFrom = this.changeEducationFrom.bind(this);
         this.changeEducationTo = this.changeEducationTo.bind(this);
         this.deleteEducation = this.deleteEducation.bind(this);
+
     }
 
     // General Information
@@ -174,7 +175,7 @@ export class Content extends React.Component {
     // Education Information
 
     changeEducationUniversity(name, index = 0) {
-
+        
         this.setState(prevState => {
             const newEducations = [...prevState.educations];
             newEducations[index].name = name;
@@ -297,7 +298,7 @@ export class Content extends React.Component {
                     
                 </div>
 
-                <div id="preview-info" className="grid grid-cols-3 grid-rows-[100px_1fr] bg-slate-400 text-left shadow-2xl bg-white sticky top-3 max-h-[50%]">
+                <div ref={this.props.printRef} id="preview-info" className="grid grid-cols-3 grid-rows-[100px_1fr] bg-slate-400 text-left shadow-2xl bg-white sticky top-3 max-h-[80%]">
                     <div className='col-span-3 bg-blue-500 p-2'>
                         <Header 
                             firstName={this.state.firstName}
